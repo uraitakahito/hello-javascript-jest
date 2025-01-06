@@ -40,7 +40,7 @@ module.exports = {
 
   overrides: [
     {
-      files: ['test/**'],
+      files: ['test/**', 'src/__tests__/*.test.js'],
       rules: {
         // Magic numbers are frequently used in tests, so disable this rule
         // https://eslint.org/docs/v8.x/rules/no-magic-numbers
@@ -54,7 +54,7 @@ module.exports = {
        * https://eslint.org/docs/v8.x/use/configure/configuration-files#using-eslintall
        */
       extends: ['plugin:jest/all'],
-      files: ['test/**'],
+      files: ['test/**', 'src/__tests__/*.test.js'],
       // You can omit the eslint-plugin- prefix
       plugins: ['jest'],
       rules: {
@@ -110,7 +110,7 @@ module.exports = {
     'import/no-extraneous-dependencies': [
       'error',
       {
-        devDependencies: ['test/*.js', 'rollup.*.js'],
+        devDependencies: ['test/*.js', 'src/__tests__/*.test.js', 'rollup.*.js'],
         peerDependencies: false,
       },
     ],

@@ -1,3 +1,4 @@
+/* eslint-disable jest/no-hooks */
 /* eslint-disable no-console */
 
 //

@@ -58,8 +58,13 @@ module.exports = {
       // You can omit the eslint-plugin- prefix
       plugins: ['jest'],
       rules: {
+        //
+        // It is better to avoid using hooks as much as possible
+        // https://zenn.dev/bun913/articles/0aeef3e7347793
         // https://eslint.org/docs/v8.x/rules/no-hooks
-        'jest/no-hooks': 'off',
+        //
+        'jest/no-hooks': 'warn',
+
         // https://github.com/jest-community/eslint-plugin-jest/blob/v28.10.0/docs/rules/prefer-expect-assertions.md
         'jest/prefer-expect-assertions': 'off',
         // https://github.com/jest-community/eslint-plugin-jest/blob/v28.9.0/docs/rules/prefer-importing-jest-globals.md

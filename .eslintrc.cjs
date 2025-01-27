@@ -91,8 +91,13 @@ module.exports = {
   rules: {
     // https://eslint.org/docs/v8.x/rules/capitalized-comments
     'capitalized-comments': 'off',
+
+    //
     // https://eslint.org/docs/v8.x/rules/func-style
-    'func-style': 'off',
+    // https://github.com/airbnb/javascript?tab=readme-ov-file#functions--declarations
+    //
+    'func-style': ['error', 'expression'],
+
     // https://eslint.org/docs/v8.x/rules/id-length
     'id-length': 'off',
 
@@ -108,10 +113,7 @@ module.exports = {
     // https://zenn.dev/odiak/articles/9aa48e892e8141
     // https://github.com/import-js/eslint-plugin-import/blob/main/docs/rules/no-anonymous-default-export.md
     //
-    'import/no-anonymous-default-export': [
-      'error',
-      { allowCallExpression: false },
-    ],
+    'import/no-anonymous-default-export': ['error', { allowCallExpression: false }],
 
     // https://github.com/import-js/eslint-plugin-import/blob/main/docs/rules/no-extraneous-dependencies.md
     'import/no-extraneous-dependencies': [
@@ -129,17 +131,47 @@ module.exports = {
     'no-console': 'off',
     // https://eslint.org/docs/v8.x/rules/no-inline-comments
     'no-inline-comments': 'off',
+    // https://eslint.org/docs/v8.x/rules/no-magic-numbers
+    'no-magic-numbers': [
+      'error', {
+        detectObjects: false,
+        enforceConst: true,
+        ignore: [1],
+        ignoreArrayIndexes: true,
+        ignoreClassFieldInitialValues: true,
+      },
+    ],
     // https://eslint.org/docs/latest/rules/no-param-reassign
     // https://github.com/airbnb/javascript/issues/1217
-    'no-param-reassign': [
+    'no-param-reassign': ['error', { props: true, ignorePropertyModificationsForRegex: ['^element'] }],
+
+    //
+    // https://eslint.org/docs/v8.x/rules/no-restricted-syntax
+    // https://zenn.dev/pirosikick/articles/f57c573282b3d8
+    //
+    'no-restricted-syntax': [
       'error',
-      { props: true, ignorePropertyModificationsForRegex: ['^element'] },
+      {
+        selector: 'ForInStatement',
+        message: 'for..in loops iterate over the entire prototype chain, which is virtually never what you want. Use Object.{keys,values,entries}, and iterate over the resulting array.',
+      },
+      {
+        selector: 'LabeledStatement',
+        message: 'Labels are a form of GOTO; using them makes code confusing and hard to maintain and understand.',
+      },
+      {
+        selector: 'WithStatement',
+        message: '`with` is disallowed in strict mode because it makes code impossible to predict and optimize.',
+      },
     ],
+
     // https://eslint.org/docs/v8.x/rules/no-ternary
     'no-ternary': 'off',
     // https://eslint.org/docs/latest/rules/no-underscore-dangle
     'no-underscore-dangle': ['error', { allow: ['__dirname'] }],
     // https://eslint.org/docs/v8.x/rules/one-var
     'one-var': 'off',
+    // https://eslint.org/docs/v8.x/rules/sort-imports
+    'sort-imports': 'error',
   },
 };

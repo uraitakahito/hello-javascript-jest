@@ -65,6 +65,25 @@ module.exports = {
         //
         'jest/no-hooks': 'warn',
 
+        // https://eslint.org/docs/v8.x/rules/sort-imports
+        'sort-imports': [
+          'error',
+          {
+            ignoreCase: false,
+
+            //
+            // Enabling all sort-imports rules can sometimes cause a deadlock
+            // e.g.
+            // https://github.com/uraitakahito/hello-javascript-jest/blob/2ecf6806d8289a884e4c2241fa2e4544039b27c8/src/__tests__/forEach.test.js#L1-L2
+            //
+            ignoreDeclarationSort: true,
+
+            ignoreMemberSort: false,
+            memberSyntaxSortOrder: ['none', 'all', 'multiple', 'single'],
+            allowSeparatedGroups: false,
+          },
+        ],
+
         // https://github.com/jest-community/eslint-plugin-jest/blob/v28.10.0/docs/rules/prefer-expect-assertions.md
         'jest/prefer-expect-assertions': 'off',
         // https://github.com/jest-community/eslint-plugin-jest/blob/v28.9.0/docs/rules/prefer-importing-jest-globals.md
